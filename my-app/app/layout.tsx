@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Roboto } from "next/font/google";
 import Provider from "./Provider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const roboto = Roboto({
   weight: "400",
@@ -20,13 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.className} antialiased`}>
-        <Provider>
-          <Navbar />
-          <main className="container"> {children}</main>
-        </Provider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${roboto.className} antialiased`}>
+          <Provider>
+            <Navbar />
+            <main className="container"> {children}</main>
+          </Provider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

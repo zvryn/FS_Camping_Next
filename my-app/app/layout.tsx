@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { Roboto } from "next/font/google";
 import Provider from "./Provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   weight: "400",
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Provider>
             <Navbar />
             <main className="container"> {children}</main>
+            <Toaster />
           </Provider>
         </body>
       </html>
